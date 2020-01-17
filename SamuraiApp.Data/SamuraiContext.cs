@@ -9,13 +9,25 @@ namespace SamuraiApp.Data
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Clan> Clans { get; set; }
 
+        public DbSet<Battle> Battles { get; set; }
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             optionsBuilder
-            .UseSqlServer("Server=127.0.0.1;Database=SamuraiAppData;User Id=sa;Password=Quemsabe890_$");
-
+                .UseSqlite("DataSource=minhabase.db");
             
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SamuraiBattle>()
+                        .HasKey(s => new { s.SamuraiId, s.BattleId });
+        }
+
+
+
     }
 }

@@ -1,8 +1,0 @@
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/bin/Debug/netstandard2.0/SamuraiApp.Data.deps.json
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/bin/Debug/netstandard2.0/SamuraiApp.Data.dll
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/bin/Debug/netstandard2.0/SamuraiApp.Data.pdb
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/obj/Debug/netstandard2.0/SamuraiApp.Data.csprojAssemblyReference.cache
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/obj/Debug/netstandard2.0/SamuraiApp.Data.AssemblyInfoInputs.cache
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/obj/Debug/netstandard2.0/SamuraiApp.Data.AssemblyInfo.cs
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/obj/Debug/netstandard2.0/SamuraiApp.Data.dll
-/home/gil/dev/SamuraiApp2020/SamuraiApp/SamuraiApp.Data/obj/Debug/netstandard2.0/SamuraiApp.Data.pdb
