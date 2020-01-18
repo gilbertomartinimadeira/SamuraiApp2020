@@ -9,33 +9,48 @@ namespace ConsoleApp
 
     public class Program
     {    
-        private static SamuraiContext context = new SamuraiContext();
+        private static SamuraiContext _context = new SamuraiContext();
         static void Main(string[] args)
         {
+
 
 
 
             //context.Database.EnsureCreated();
 
             //GetSamurais("Before Add:");
-            AddSamurais();
+            //AddSamurais();
             //AddBattles();
             //GetSamuraisFromAClan(1);
             //GetBattles();
-
+            QueryFilters();
 
             //AssociarSamuraiABatalhas(1);
         }
-         private  static void AddSamurais()
-         {
-            var samurai1 = new Samurai { Name = "Toushiro San" };
-            var samurai2 = new Samurai { Name = "Himura Sensei" };
 
-            context.Samurais.AddRange(samurai1,samurai2);
+        private static void QueryFilters()
+        {
+            var name = "Julie";
+            var samurais = _context.Samurais.Where(s => s.Name == name).ToList();
 
-            context.SaveChanges();
-            
+
         }
+        //  private  static void AddSamurais()
+        //  {
+        //      var samurais = new List<Samurai>(){
+        //         new Samurai { Name = "Toushiro San" },
+        //         new Samurai { Name = "Himura Sensei" },
+        //         new Samurai { Name = "Nakamura San" },
+        //         new Samurai { Name = "Chizuka Sensei" },
+        //         new Samurai { Name = "Minato Kun" },
+        //         new Samurai { Name = "Mayumi Chan" }
+        //      };
+
+        //     context.Samurais.AddRange(samurais);
+
+        //     context.SaveChanges();
+            
+        // }
         /*
         private static void AssociarSamuraiABatalhas(int samuraiId)
         {
@@ -76,7 +91,7 @@ namespace ConsoleApp
        
         /*
        
-        */
+        
          private static void GetSamurais(string text)
         {
             var samurais = context.Samurais
@@ -131,6 +146,6 @@ namespace ConsoleApp
         {
             return null;
         }
-
+*/
     }
 }
