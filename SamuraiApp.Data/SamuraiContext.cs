@@ -22,6 +22,7 @@ namespace SamuraiApp.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             optionsBuilder
+                .EnableSensitiveDataLogging()
                 .UseLoggerFactory(ConsoleLoggerFactory)
                 .UseSqlServer("Server=127.0.0.1;Database=SamuraiAppData;User Id=sa;Password=Quemsabe890_$");
                 //.UseSqlite("DataSource=minhabase.db");
