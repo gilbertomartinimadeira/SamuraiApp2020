@@ -4,10 +4,9 @@ using SamuraiApp.Domain;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-
 namespace ConsoleApp
 {
-    
+
     public class Program
     {    
         private static SamuraiContext context = new SamuraiContext();
@@ -19,13 +18,23 @@ namespace ConsoleApp
             //context.Database.EnsureCreated();
 
             //GetSamurais("Before Add:");
-            //AddSamurais();
+            AddSamurais();
             //AddBattles();
-            //GetSamurais("Samurais:");
+            //GetSamuraisFromAClan(1);
             //GetBattles();
 
 
             //AssociarSamuraiABatalhas(1);
+        }
+         private  static void AddSamurais()
+         {
+            var samurai1 = new Samurai { Name = "Toushiro San" };
+            var samurai2 = new Samurai { Name = "Himura Sensei" };
+
+            context.Samurais.AddRange(samurai1,samurai2);
+
+            context.SaveChanges();
+            
         }
         /*
         private static void AssociarSamuraiABatalhas(int samuraiId)
@@ -51,15 +60,7 @@ namespace ConsoleApp
             }
         }
 
-        private  static void AddSamurais(){
-            var samurai1 = new Samurai { Name = "Toushiro San" };
-            var samurai2 = new Samurai { Name = "Himura Sensei" };
-
-            context.Samurais.AddRange(samurai1,samurai2);
-
-            context.SaveChanges();
-            
-        }
+       
         private static void AddBattles()
         {
             var batalha1 = new Battle { StartDate = new DateTime(1799, 1, 1), EndDate = new DateTime(1799, 1, 3), Nome = "Batalha de Okinawa" };
@@ -72,9 +73,15 @@ namespace ConsoleApp
 
         }
 
-        private static void GetSamurais(string text)
+       
+        /*
+       
+        */
+         private static void GetSamurais(string text)
         {
-            var samurais = context.Samurais.Include(s=> s.SamuraiBattles).ToList();
+            var samurais = context.Samurais
+                                  .Include(s=> s.SamuraiBattles)                                
+                                  .ToList();
 
             Console.WriteLine($"{text}: Samurai count is {samurais.Count} ");
 
@@ -84,7 +91,19 @@ namespace ConsoleApp
             }
 
         }
-        /*
+         private static void GetSamuraisFromAClan(int ClanId)
+         {
+            var samurais = context.Samurais
+                                  .Include(s => s.Clan)
+                                  .Include(s => s.SamuraiBattles)                                
+                                  .ToList();        
+
+            foreach (var samurai in samurais)
+            {
+                Console.WriteLine(samurai.Name);
+            }
+
+        }
         private static void GetBattles()
         {
             var battles = context.Battles.ToList();
@@ -96,10 +115,18 @@ namespace ConsoleApp
             foreach (var battle in battles)
             {
                 Console.WriteLine($"{battle.Nome} começou em {battle.StartDate} e terminou em {battle.EndDate}");
+
+                System.Console.Write($"Samurais na batalha: \t");
+                
+                foreach(var sb in battle?.SamuraiBattles)
+                {
+                    System.Console.Write($"{sb.SamuraiId},");
+                }
+                System.Console.WriteLine();
             }
-            
         }
-        */
+
+
         private static ICollection<SamuraiBattle> GetSamuraiBattles(int samuraiId)
         {
             return null;
