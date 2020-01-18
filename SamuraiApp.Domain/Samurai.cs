@@ -13,6 +13,9 @@ namespace SamuraiApp.Domain
         {
             Quotes = new List<Quote>();
         }
-        
+
+        public ICollection<SamuraiBattle> SamuraiBattles { get; set; }
+
+
     }
 }
