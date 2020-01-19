@@ -23,7 +23,11 @@ namespace ConsoleApp
             //AddBattles();
             //GetSamuraisFromAClan(1);
             //GetBattles();
-            QueryFilters();
+            //QueryFilters();
+
+            //InsertNewSamuraiWithAQuote();
+
+            AddQuoteToExistingSamuraiNotTracked(18);
 
             //AssociarSamuraiABatalhas(1);
         }
@@ -147,5 +151,50 @@ namespace ConsoleApp
             return null;
         }
 */
+
+        // private static void InsertNewSamuraiWithAQuote()
+        // {
+        //     var samurai = new Samurai(){
+        //         Name = "Fausto San",
+        //         Quotes = new List<Quote>{
+        //             new Quote(){
+        //                 Text = "Essa fera aí bicho"
+        //             }
+        //         }
+        //     };
+
+        //     _context.Samurais.Add(samurai);
+
+        //     _context.SaveChanges();
+        // }
+
+        // private static void AddQuoteToExistingSamuraiNotTracked(int samuraiId){
+
+        //     var samurai = _context.Samurais.Find(samuraiId);
+
+        //     samurai.Quotes.Add(new Quote{
+        //         Text = "Um dos maiores ORMs de todos os tempos"
+        //     });
+
+        //     using (var newcontext = new SamuraiContext()){
+        //         newcontext.Samurais.Attach(samurai); // marca como tracked e unmodified
+        //         newcontext.SaveChanges();
+
+        //     }
+        // }
+
+        private static void AddQuoteToExistingSamuraiNotTracked_Easy(int samuraiId){
+
+            var quote = new Quote{
+                Text = "Um dos maiores ORMs de todos os tempos"
+            };
+
+            using (var newcontext = new SamuraiContext()){
+                
+                newcontext.Quotes.Add(quote); // marca como tracked
+                newcontext.SaveChanges();
+
+            }
+        }
     }
 }
